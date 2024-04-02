@@ -50,7 +50,8 @@ def generate_random_board():
     """Gera um tabuleiro inicial aleatório."""
     numbers = list(range(1, 9)) + [None]
     shuffle(numbers)
-    return [numbers[i:i+3] for i in range(0, 9, 3)]
+    #return [numbers[i:i+3] for i in range(0, 9, 3)]
+    return [[1, 2, 4], [3, None, 8], [7, 5, 6]]
 
 def solve_puzzle(initial_board):
     """Resolve o puzzle utilizando o algoritmo de busca A*."""
