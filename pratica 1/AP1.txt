@@ -5,9 +5,13 @@ Sistemas de Informação
 Atividade Prática 1
 Trabalho sobre Métodos de busca (2024/1)
 
-O propósito do trabalho é implementar1 o algoritmo de busca A*. A implementação será testada através do jogo 8-puzzle2, o qual também fornece o contexto para a heurística.
+O propósito do trabalho é implementar1 o algoritmo de busca A*.
+A implementação será testada através do jogo 8-puzzle2, o qual também fornece o contexto para a heurística.
 
-A entrada do programa é um tabuleiro desordenado (com o quadrado sem número em qualquer lugar do tabuleiro) e um algoritmo de busca (detalhes a seguir). A saída principal do programa é o menor caminho (a sequência de movimentos do quadrado sem número) para chegar-se ao tabuleiro ordenado3. Além do caminho, ao final, deve ser exibido:
+A entrada do programa é um tabuleiro desordenado (com o quadrado sem número em qualquer lugar do tabuleiro)
+e um algoritmo de busca (detalhes a seguir). A saída principal do programa é o menor caminho
+ (a sequência de movimentos do quadrado sem número) para chegar-se ao tabuleiro ordenado.
+ Além do caminho, ao final, deve ser exibido:
 O total de nodos visitados
 O tamanho do caminho
 Tempo de execução (em segundos)
@@ -19,26 +23,44 @@ A* com a heurística mais precisa que conseguirem
 
 Juntamente com a implementação (.ZIP) deverá ser entregue um mini-relatório explicando brevemente:
 Quais os métodos ou funções principais e suas relações com o algoritmo A*;
-Como foi gerenciada a fronteira, ou seja, quais verificações foram feitas antes de adicionar um estado na fronteira (explicar e mostrar os respectivos trechos de código);
-Descrição das heurísticas e comparação da faixa de valores e da precisão delas (no mínimo: dois casos difíceis, dois médios e um fácil); breve descrição sobre suas implementações;
-Breve análise do desempenho da implementação com uma tabela comparativa (usando as informações da saída) das 3 variações implementadas (no mínimo: um caso difícil, um médio e um fácil para as abordagens com heurísticas e um médio e um fácil para o custo uniforme);
-Caso algum dos objetivos não tenha sido alcançado explique o que você faria VS o que foi feito e exatamente qual o(s) problema(s) encontrado(s), bem como  limitações da implementação.
+Como foi gerenciada a fronteira, ou seja, quais verificações foram feitas antes de adicionar um estado
+na fronteira (explicar e mostrar os respectivos trechos de código);
+Descrição das heurísticas e comparação da faixa de valores e da precisão delas
+(no mínimo: dois casos difíceis, dois médios e um fácil); breve descrição sobre suas implementações;
+Breve análise do desempenho da implementação com uma tabela comparativa (usando as informações da saída)
+ das 3 variações implementadas (no mínimo: um caso difícil, um médio e um fácil para as abordagens
+ com heurísticas e um médio e um fácil para o custo uniforme);
+Caso algum dos objetivos não tenha sido alcançado explique o que você faria VS o que foi feito
+e exatamente qual o(s) problema(s) encontrado(s), bem como  limitações da implementação.
 
 
-Caso tenha sido utilizado algum referencial teórico ou prático, o mesmo deverá ser informado (incluindo-se repositórios, e quaisquer códigos-fonte). A avaliação da implementação considera especialmente a forma de implementar a busca e os cálculos das heurísticas. Para receber nota máxima na implementação é necessário utilizar uma estrutura de dados e de busca adequada além de implementar a heurística matematicamente (sem uso de regras codificadas). Importante: a avaliação considera todo o trabalho realizado, não apenas uma saída correta. No livro do Russel & Norvig e no do Luger são apresentadas boas discussões sobre heurísticas para esse problema e também uma boa apresentação do A*.
+Caso tenha sido utilizado algum referencial teórico ou prático, o mesmo deverá ser informado
+(incluindo-se repositórios, e quaisquer códigos-fonte).
+A avaliação da implementação considera especialmente a forma de implementar a busca e os cálculos das heurísticas.
+ Para receber nota máxima na implementação é necessário utilizar uma estrutura de dados e de busca adequada
+ além de implementar a heurística matematicamente (sem uso de regras codificadas).
+ Importante: a avaliação considera todo o trabalho realizado, não apenas uma saída correta.
+ No livro do Russel & Norvig e no do Luger são apresentadas boas discussões sobre heurísticas
+ para esse problema e também uma boa apresentação do A*.
 
-Se for detectado plágio de qualquer forma (inclusive de trabalhos de semestres anteriores ou de códigos gerados por máquina), todos os envolvidos receberão nota 0 e não será possível entregar o trabalho novamente em nenhum momento.
+Se for detectado plágio de qualquer forma (inclusive de trabalhos de semestres anteriores
+ou de códigos gerados por máquina), todos os envolvidos receberão nota 0 e não será possível
+entregar o trabalho novamente em nenhum momento.
 
 O trabalho foi planejado para ser desenvolvido por equipes de até 3 alunos.
 
 Prazo para entrega: 16/04/2024
 
-1. Linguagens: Python3, Java, GCC (linux), JS, Lua, Go. Em qualquer uma das linguagens NÃO utilize bibliotecas 3D e evite bibliotecas de uma maneira geral. A interface com o usuário NÃO será avaliada. Se quiser utilizar outra linguagem converse com o professor primeiro.
+1. Linguagens: Python3, Java, GCC (linux), JS, Lua, Go. Em qualquer uma das linguagens NÃO utilize
+bibliotecas 3D e evite bibliotecas de uma maneira geral. A interface com o usuário NÃO será avaliada.
+Se quiser utilizar outra linguagem converse com o professor primeiro.
 
-2. Quem desejar implementar o algoritmo A* (ou o MINMAX) com outro problema ou jogo, converse com o professor para ver a viabilidade do projeto, nesse caso o prazo mudará conforme a complexidade.
+2. Quem desejar implementar o algoritmo A* (ou o MINMAX) com outro problema ou jogo,
+converse com o professor para ver a viabilidade do projeto, nesse caso o prazo mudará conforme a complexidade.
 
 3. Para a implementação deste trabalho deve ser considerada apenas uma solução possível:
 1 2 3
 4 5 6
 7 8 vazio
-Caso alguém queira implementar com qualquer solução também pode, mas nesse caso deve-se considerar todas as possíveis soluções, e não somente uma.
+Caso alguém queira implementar com qualquer solução também pode, mas nesse caso deve-se considerar
+ todas as possíveis soluções, e não somente uma.
