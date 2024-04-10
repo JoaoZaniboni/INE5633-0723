@@ -1,7 +1,5 @@
 # Implementação versão 1, Custo Uniforme (sem heurística)
-
 from random import shuffle
-from collections import deque
 import time
 
 # Definindo o estado objetivo do puzzle
@@ -56,12 +54,12 @@ def generate_random_board():
 def solve_puzzle(initial_board):
     """Resolve o puzzle utilizando o algoritmo de busca A*."""
     visited = set()
-    queue = deque([(initial_board, [])])  # Armazena o estado do tabuleiro e o caminho até o estado atual
+    queue = [(initial_board, [])]  # Armazena o estado do tabuleiro e o caminho até o estado atual
 
     start_time = time.time()
 
     while queue:
-        current_board, current_path = queue.popleft()
+        current_board, current_path = queue.pop(0)
 
         if is_goal_state(current_board):
             end_time = time.time()
