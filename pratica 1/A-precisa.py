@@ -1,3 +1,4 @@
+
 # Distância de Manhattan como uma heurística
 
 from random import shuffle
@@ -77,7 +78,7 @@ def is_goal_state(board):
 #     # return [[1, 2, 3], [4, 5, None], [6, 7, 8]]
 
 def solve_puzzle(initial_board):
-    """Resolve o puzzle utilizando o algoritmo A* com uma heurística simples."""
+    """Resolve o puzzle utilizando o algoritmo A* com uma heurística de manhattan"""
     visited = set()
     queue = [(initial_board, [], 0)]  # Armazena o estado do tabuleiro, o caminho até o estado atual e o custo acumulado
 
@@ -110,6 +111,7 @@ def solve_puzzle(initial_board):
 
 if __name__ == "__main__":
     # initial_state = generate_random_board()
+    start_time_total = time.time()
     for bd in boards_exemples:
         print("Estado inicial:")
         print_board(bd)
@@ -123,3 +125,5 @@ if __name__ == "__main__":
                 print(moves_dict[move])
         else:
             print("Não foi possível encontrar uma solução.")
+    end_time_total = time.time()
+    print("Tempo total para resolver: {:.6f} segundos".format(end_time_total - start_time_total))
