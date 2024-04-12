@@ -1,5 +1,5 @@
 
-# Distância de Manhattan como uma heurística
+# Programa para escolher qual busca usar
 
 from random import shuffle
 import time
@@ -8,7 +8,7 @@ boards_exemples = [[[2, 3, 6], [1, 5, None], [4, 7, 8]],
                    [[3, None, 6], [4, 2, 1], [7, 5, 8]],
                    [[2, 3, None], [1, 8, 4], [7, 5, 6]],
                    [[None, 4, 7], [2, 3, 1], [6, 8, 5]],
-                   [[8, 4, 1], [None, 2, 6], [5, 7, 3]]]
+                   [[5, 3, 7], [8, 6, 2], [None, 1, 4]]]
 # Definindo o estado objetivo do puzzle
 goal_state = [[1, 2, 3],
               [4, 5, 6],
