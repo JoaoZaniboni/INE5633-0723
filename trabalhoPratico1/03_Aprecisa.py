@@ -26,11 +26,9 @@ def get_blank_position(board):
             if board[i][j] is None:
                 return i, j
 
-
 def is_valid_move(x, y):
     """Verifica se o movimento é válido"""
     return 0 <= x < 3 and 0 <= y < 3
-
 
 def move_blank(board, move):
     """Move o quadrado vazio no tabuleiro"""
@@ -45,7 +43,6 @@ def move_blank(board, move):
     else:
         return None
 
-
 def manhattan_distance(board):
     """Calcula a distância de Manhattan"""
     distance = 0
@@ -57,25 +54,15 @@ def manhattan_distance(board):
                 distance += abs(goal_x - i) + abs(goal_y - j)
     return distance
 
-
 def print_board(board):
     """Imprime o tabuleiro"""
     for row in board:
         print(" ".join(str(cell) if cell is not None else " " for cell in row))
     print()
 
-
 def is_goal_state(board):
     """Verifica se o tabuleiro está no estado objetivo"""
     return board == goal_state
-
-
-# def generate_random_board():
-#     """Gera um tabuleiro inicial aleatório"""
-#     numbers = list(range(1, 9)) + [None]
-#     shuffle(numbers)
-#     return [numbers[i:i+3] for i in range(0, 9, 3)]
-#     # return [[1, 2, 3], [4, 5, None], [6, 7, 8]]
 
 def solve_puzzle(initial_board):
     """Resolve o puzzle utilizando o algoritmo A* com uma heurística de manhattan"""
@@ -108,7 +95,6 @@ def solve_puzzle(initial_board):
 
     return None
 
-
 if __name__ == "__main__":
     # initial_state = generate_random_board()
     start_time_total = time.time()
@@ -127,3 +113,4 @@ if __name__ == "__main__":
             print("Não foi possível encontrar uma solução.")
     end_time_total = time.time()
     print("Tempo total para resolver: {:.6f} segundos".format(end_time_total - start_time_total))
+    

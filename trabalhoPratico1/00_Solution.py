@@ -1,5 +1,5 @@
 
-# Programa para escolher qual busca usar
+# Todas as implementações em um arquivo, permitimos o usuário escolher qual implementação quer utilizar
 
 from random import shuffle
 import time
@@ -9,6 +9,7 @@ boards_exemples = [[[2, 3, 6], [1, 5, None], [4, 7, 8]],
                    [[2, 3, None], [1, 8, 4], [7, 5, 6]],
                    [[None, 4, 7], [2, 3, 1], [6, 8, 5]],
                    [[5, 3, 7], [8, 6, 2], [None, 1, 4]]]
+
 # Definindo o estado objetivo do puzzle
 goal_state = [[1, 2, 3],
               [4, 5, 6],
@@ -18,7 +19,6 @@ goal_state = [[1, 2, 3],
 moves_dict = {(0, -1): "left", (0, 1): "right",
               (-1, 0): "up", (1, 0): "down"}
 
-
 def get_blank_position(board):
     """Retorna a posição do quadrado vazio no tabuleiro"""
     for i in range(len(board)):
@@ -26,11 +26,9 @@ def get_blank_position(board):
             if board[i][j] is None:
                 return i, j
 
-
 def is_valid_move(x, y):
     """Verifica se o movimento é válido"""
     return 0 <= x < 3 and 0 <= y < 3
-
 
 def move_blank(board, move):
     """Move o quadrado vazio no tabuleiro"""
@@ -45,26 +43,15 @@ def move_blank(board, move):
     else:
         return None
 
-
-
 def print_board(board):
     """Imprime o tabuleiro"""
     for row in board:
         print(" ".join(str(cell) if cell is not None else " " for cell in row))
     print()
 
-
 def is_goal_state(board):
     """Verifica se o tabuleiro está no estado objetivo"""
     return board == goal_state
-
-
-# def generate_random_board():
-#     """Gera um tabuleiro inicial aleatório"""
-#     numbers = list(range(1, 9)) + [None]
-#     shuffle(numbers)
-#     return [numbers[i:i+3] for i in range(0, 9, 3)]
-#     # return [[1, 2, 3], [4, 5, None], [6, 7, 8]]
 
 def manhattan_distance(board):
     """Calcula a distância de Manhattan"""
@@ -147,7 +134,6 @@ def solve_puzzle_uniform_cost(initial_board):
                 queue.append((new_board, new_path))
 
     return None
-
 
 if __name__ == "__main__":
     # initial_state = generate_random_board()
