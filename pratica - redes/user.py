@@ -28,10 +28,12 @@ class User:
 
         if not self.server.buscar_usuario(name, key):
             print('\n----- Usuário e/ou senha inválidos!! -----')
-            return
+            return False
 
         if self.server.apply_2factor(key):
             print('\n------ Login realizado com sucesso  ------'
                   '\n--------------- Bem Vindo ---------------')
+            return True
         else:
             print('\n-- Tentativas excedidas do segundo fator --')
+            return False
