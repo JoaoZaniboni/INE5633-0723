@@ -9,9 +9,12 @@ def user_menu():
               '\n---- 2 - Desconectar -------------------------')
         escolha = input('\nDigite uma opção: ')
         if escolha == '1':
-            msg = input('\nDigite uma mensagem: ')
-            if msg:
-                user.send_than_receive_msg(msg)
+            while True:
+                msg = input('\nDigite uma mensagem ou nada para sair da conversa: ')
+                if msg and msg != "":
+                    user.send_than_receive_msg(msg)
+                else:
+                    break
         elif escolha == '2':
             break
         else:
