@@ -16,24 +16,23 @@ class User:
         pwd = input('Senha: ')
 
         key = self.create_key(pwd)
-        qrcode_auth = self.server.user_register(name, key)
+        qrcode_image = self.server.user_register(name, key)
+        qrcode_image.show()
 
-        if qrcode_auth is False:
-            return
-
-        qrcode_auth.show()
-
-        print('----- Usuário cadastrado!! -----')
+        print('\n----- Usuário cadastrado!! -----')
 
     def login(self):
         name = input('Nome de usuário: ')
         pwd = input('Senha: ')
 
         key = self.create_key(pwd)
-        user = self.server.buscar_usuario(name, key)
 
-        if user is False:
-            print('----- Usuário e/ou senha inválidos!! -----')
+        if not self.server.buscar_usuario(name, key):
+            print('\n----- Usuário e/ou senha inválidos!! -----')
             return
 
-        print('------ Login realizado com sucesso!! ------')
+        if self.server.apply_2factor(key):
+            print('\n------ Login realizado com sucesso  ------'
+                  '\n--------------- Bem Vindo ---------------')
+        else:
+            print('\n-- Tentativas excedidas do segundo fator --')
