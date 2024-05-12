@@ -1,10 +1,9 @@
 from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Hash import SHA512
-from server import Server
 
 class User:
-    def __init__(self):
-        self.server = Server()
+    def __init__(self, server):
+        self.server = server
 
     def create_key(self, pwd):
         salt = 'salt_hard_coded_again'

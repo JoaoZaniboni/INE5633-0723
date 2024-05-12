@@ -1,7 +1,8 @@
 from user import User
 from server import Server
 
-cliente = User()
+server = Server()
+cliente = User(server)
 
 if __name__ == "__main__":
 
