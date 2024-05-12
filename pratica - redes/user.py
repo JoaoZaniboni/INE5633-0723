@@ -12,8 +12,8 @@ class User:
         return key
 
     def create_user(self):
-        name = input('Digite seu nome de usuário:')
-        pwd = input('Digite sua senha:')
+        name = input('Nome de usuário: ')
+        pwd = input('Senha: ')
 
         key = self.create_key(pwd)
         qrcode_auth = self.server.user_register(name, key)
@@ -23,17 +23,17 @@ class User:
 
         qrcode_auth.show()
 
-        print('Usuário cadastrado!!')
+        print('----- Usuário cadastrado!! -----')
 
     def login(self):
-        name = input('Digite seu nome de usuário:')
-        pwd = input('Digite sua senha:')
+        name = input('Nome de usuário: ')
+        pwd = input('Senha: ')
 
         key = self.create_key(pwd)
         user = self.server.buscar_usuario(name, key)
 
         if user is False:
-            print('Usuário e/ou senha inválidos!!')
+            print('----- Usuário e/ou senha inválidos!! -----')
             return
 
-        print('Login realizado com sucesso!!')
+        print('------ Login realizado com sucesso!! ------')

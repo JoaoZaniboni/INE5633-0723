@@ -19,7 +19,7 @@ class Server:
 
     def user_register(self, name, key):
         if name in self.users.keys():
-            print('Usuário ja cadastrado no sistema!!')
+            print('----- Usuário ja cadastrado no sistema!! -----')
             return False
 
         scrypt_key = self.apply_scrypt(key)
@@ -48,6 +48,6 @@ class Server:
             totp_input = input('Digite o código de autenticação de 2 fatores do App: ')
 
             if totp.verify(totp_input):
-                print("Código de autenticação de 2 fatores validado")
+                print("\nCódigo de autenticação de 2 fatores validado")
                 return True
-            print("Código de autenticação de 2 fatores invalido, tente novamente!!")
+            print("\nCódigo de autenticação de 2 fatores invalido, tente novamente!!")

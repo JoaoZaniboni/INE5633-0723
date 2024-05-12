@@ -6,8 +6,11 @@ cliente = User()
 if __name__ == "__main__":
 
     while True:
-        print('\nO que deseja fazer? \n1 - Cadastro \n2 - Login \n3 - Sair')
-        escolha = input()
+        print('\n-------- Sistema de Cadastro TOTP2AUT --------'
+              '\n---------- 1 - Cadastro de usuario ----------'
+              '\n---------- 2 - Login ------------------------'
+              '\n---------- 3 - Fechar ----------------------')
+        escolha = input('\nDigite uma opção: ')
         if escolha == '1':
             cliente.create_user()
         elif escolha == '2':
@@ -15,4 +18,4 @@ if __name__ == "__main__":
         elif escolha == '3':
             break
         else:
-            print('Por favor, insira um número inteiro entre 1 e 3')
+            print('\nPor favor, insira um número inteiro entre 1 e 3')
