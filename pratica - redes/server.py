@@ -24,9 +24,9 @@ class Server:
     def users(self):
         return self.__users
 
-    def apply_scrypt(self, key):
-        salt = 'salt_hard_coded'
-        scrypt_key = scrypt(key, salt, 32, N=16384, r=8, p=1)
+    def apply_scrypt(self, namekey, salt):
+        salt = self.ceaser_cypher(salt, len(salt))
+        scrypt_key = scrypt(namekey, salt, 32, N=16384, r=8, p=1)
         return scrypt_key
 
     def user_register(self, name, key):
@@ -34,7 +34,7 @@ class Server:
             print('\n----- Usuário ja cadastrado no sistema!! -----')
             return False
 
-        scrypt_key = self.apply_scrypt(key)
+        scrypt_key = self.apply_scrypt(name.encode()+key, name)
         self.users[name] = scrypt_key
         totp = TOTP(base64.b32encode(scrypt_key)).provisioning_uri(name=name, issuer_name='UFSCJoao-Pedro')
         qrcode_image = qrcode.make(totp)
@@ -42,23 +42,23 @@ class Server:
         return qrcode_image
 
     def seek_user(self, name, key):
-        scrypt_key = self.apply_scrypt(key)
+        scrypt_key = self.apply_scrypt(name.encode()+key, name)
 
         if name in self.users.keys():
             if self.users[name] == scrypt_key:
                 return True
         return False
 
-    def create_key(self, pwd):
-        salt = 'salt_hard_coded_again'
+    def create_key(self, pwd, salt):
+        salt = self.ceaser_cypher(salt, len(salt))
         key = PBKDF2(pwd, salt, count=1000, hmac_hash_module=SHA256)
         return key
 
-    def apply_2factor(self, key, totp_input):
-        scrypt_key = self.apply_scrypt(key)
+    def apply_2factor(self, name, key, totp_input):
+        scrypt_key = self.apply_scrypt(name.encode()+key, name)
         totp = TOTP(base64.b32encode(scrypt_key))
         if totp.verify(totp_input):
-            self.session_key = self.create_key(totp_input)
+            self.session_key = self.create_key(totp_input, name)
             return True
         return False
 
@@ -94,3 +94,12 @@ class Server:
             msg_to_send = f"Lido mensagem '{decrypted_msg}', mas usuário, eu sou uma máquina sem IA, por enquanto ainda não consigo gerar respostas legais..."
             return self.autenticated_encrypt(msg_to_send, self.session_key)
         return False
+
+    def ceaser_cypher(self, text, key):
+        encrypted = ""
+        for char in text:
+            if char.isalpha():
+                encrypted += chr((ord(char) + key - 97) % 26 + 97)
+            else:
+                encrypted += char
+        return encrypted

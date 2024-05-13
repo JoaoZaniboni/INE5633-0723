@@ -15,16 +15,18 @@ class User:
     def session_key(self, key):
         self.__session_key = key
 
-    def create_key(self, pwd):
-        salt = 'salt_hard_coded_again'
+    def create_key(self, pwd, salt):
+        salt = self.ceaser_cypher(salt, len(salt))
         key = PBKDF2(pwd, salt, count=1000, hmac_hash_module=SHA256)
         return key
 
     def create_user(self):
         name = input('Nome de usuário: ')
         pwd = input('Senha: ')
-
-        key = self.create_key(pwd)
+        if not name or not pwd:
+            print('\n----- Senha e Nome de usuário não podem estar vazios!! -----')
+            return
+        key = self.create_key(pwd, name)
         qrcode_image = self.server.user_register(name, key)
         qrcode_image.show()
 
@@ -34,7 +36,7 @@ class User:
         name = input('Nome de usuário: ')
         pwd = input('Senha: ')
 
-        key = self.create_key(pwd)
+        key = self.create_key(pwd, name)
 
         if not self.server.seek_user(name, key):
             print('\n----- Usuário e/ou senha inválidos!! -----')
@@ -43,10 +45,10 @@ class User:
         trys = 0
         while trys <= 2:
             totp_input = input('\nDigite o código de autenticação de 2 fatores do App: ')
-            if self.server.apply_2factor(key, totp_input):
+            if self.server.apply_2factor(name,key, totp_input):
                 print('\n------ Login realizado com sucesso  ------'
                       '\n--------------- Bem Vindo ---------------')
-                self.session_key = self.create_key(totp_input)
+                self.session_key = self.create_key(totp_input, name)
                 return True
             trys += 1
             print(f"\nCódigo de autenticação de 2 fatores invalido! Chances: {trys}/3")
@@ -87,4 +89,11 @@ class User:
             decrypted_msg = self.autenticated_decrypt(response_msg, self.session_key)
             print(decrypted_msg)
 
-
+    def ceaser_cypher(self, text, key):
+        encrypted = ""
+        for char in text:
+            if char.isalpha():
+                encrypted += chr((ord(char) + key - 97) % 26 + 97)
+            else:
+                encrypted += char
+        return encrypted
