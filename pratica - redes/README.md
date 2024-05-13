@@ -8,3 +8,6 @@ Para rodar o código, primeiro crie uma máquina virual e depois de o comando:
 pip install -r 'requirements.txt'
 
 Por fim, rode o arquivo main.py
+
+quando se cadastrar, irá aparecer uma imagem qrcode, você deve ler essa mensagem qrcode com App de autentificação de 2 fatores, como o Authenticator do google.
+Ao realizar login, irá pedir o código de 2 fatores, você deve pegar esse códgo no app que você cadastrou.
