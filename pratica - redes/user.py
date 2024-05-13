@@ -60,7 +60,7 @@ class User:
         msg = msg.encode()
 
         cipher = AES.new(session_key, AES.MODE_GCM)
-        encrypted_msg, mac = cipher.encrypt_and_digest(msg)
+        encrypted_msg, mac = cipher.encrypt_and_digest(msg) # hmac com SHA25
 
         return cipher.nonce + mac + encrypted_msg
 
